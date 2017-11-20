@@ -30,7 +30,8 @@ func exec_inter(){
 		path_list := strings.Split(dirname,"\\")
 		single_dir_name := path_list[len(path_list)-1]
 		//"E:\\percatch\\" + yesterday + "\\DataCollector01.etl"
-		idcshare := "\\\\idcshare.op.internal.gridsumdissector.com\\idcshare\\wangyiqi\\xml\\" + single_dir_name + ".xml"
+		hostname := strings.Split(single_dir_name,"_")[0]
+		idcshare := "\\\\idcshare.op.internal.gridsumdissector.com\\idcshare\\wangyiqi\\xml\\" + hostname + "\\" + single_dir_name + ".xml"
 		c := exec.Command("tracerpt", filename, "-o", idcshare, "-lr", "-of", "XML")
 		c.Stdout = os.Stdout
 		c.Run()
